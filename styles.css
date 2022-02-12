@@ -1,0 +1,40 @@
+#flex {
+    display: flex;
+    justify-content: space-between;
+}
+/* 
+Header styling 
+*/
+h1 {
+    text-align: center;
+    font-size: 4em;
+}
+
+/* 
+User scores/position styling
+*/
+.scores {
+    list-style: none;
+}
+
+/* 
+Game board styling 
+*/
+.board {
+    display: flex;
+    flex-wrap: wrap;
+}
+.box {
+    width: 80px;
+    height: 80px;
+}
+
+/* 
+Dice roll styling
+*/
+#rollButton {
+    margin: auto;
+    padding: .7em 1.4em;
+    font-size: 2em;
+    border-radius: 55px;
+}

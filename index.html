@@ -10,22 +10,25 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <header>
-            player's turn
+            <h1 id="currentPlayer">player's turn</h1>
         </header>
-        <div>
-            unordered list of scores/positions
+        <div id="flex">
+            <aside>
+                <ul>
+                    <li class="scores">scores/positions</li>
+                </ul>
+            </aside>
+            <div class="board">
+            </div>
+            <aside id="rollArea">
+                <img src="./assets/dice1.png" id="diceImage" alt="Dice image for the roll">
+                <button id="rollButton">Roll</button>
+            </aside>
         </div>
-        <div>
-            board here
-        </div>
-        <div>
-            dice here
-        </div>
-        
-        <script src="" async defer></script>
+        <script src="index.js" async defer></script>
     </body>
 </html>

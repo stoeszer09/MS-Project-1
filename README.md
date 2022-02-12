@@ -20,7 +20,7 @@ probably special function for the chutes and ladders
 
 Minimum start: 1 player 3 computers
 Collect player names
-    Computer will be random picked names from a list
+    Computer will be random picked names from a list // faker.js
 Username and positions on the left side
 Die results ont he right side
 Top will show who's turn it is
@@ -29,5 +29,12 @@ Humans will always go first
 
 Stretch goals:
 make responsive
+some kind of celebration for winning
 get character gifs that walk
 Title screen: choose 1-4 players
+easy, normal, hard mode
+    looks for chutes and ladders ahead
+    changes the number generator slightly
+
+Different themes
+Different dice options
