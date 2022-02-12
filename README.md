@@ -1,1 +1,33 @@
 # MS-Project-1
+
+Chutes and Ladders
+
+random die rolling generator
+board 1-100
+9 laddders
+    assets folder
+10 slides
+    assets folder
+colored meeple
+
+Land exactly on 100 to win. No overshooting.
+
+when the die is rolled: have the meeple slide instead of just appear
+When landing on the bottom of a ladder: meeple slides up the ladder
+when landing on the top of a Chute: meeple slide down the chute
+character movement function for left, right, up, down
+probably special function for the chutes and ladders
+
+Minimum start: 1 player 3 computers
+Collect player names
+    Computer will be random picked names from a list
+Username and positions on the left side
+Die results ont he right side
+Top will show who's turn it is
+Humans will always go first
+
+
+Stretch goals:
+make responsive
+get character gifs that walk
+Title screen: choose 1-4 players
