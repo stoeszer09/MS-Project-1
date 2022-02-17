@@ -5,9 +5,25 @@ Chutes and Ladders
 random die rolling generator
 board 1-100
 9 laddders
-    assets folder
+    1 -> 38
+    5 -> 14
+    9 -> 31
+    28 -> 84
+    40 -> 42
+    36 -> 44
+    51 -> 67
+    80 -> 100
+    71 -> 90
 10 slides
-    assets folder
+    98 -> 78
+    95 -> 75
+    93 -> 73
+    87 -> 24
+    64 -> 60
+    56 -> 53
+    47 -> 26
+    49 -> 11
+    16 -> 6
 colored meeple
 
 Land exactly on 100 to win. No overshooting.

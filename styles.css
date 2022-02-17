@@ -23,6 +23,7 @@ Game board styling
 .board {
     display: flex;
     flex-wrap: wrap;
+    width: 800px;
 }
 .box {
     width: 80px;
@@ -32,6 +33,9 @@ Game board styling
 /* 
 Dice roll styling
 */
+.rollArea {
+    margin: auto;
+}
 #rollButton {
     margin: auto;
     padding: .7em 1.4em;
