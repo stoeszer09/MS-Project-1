@@ -39,33 +39,46 @@ function rollDice() {
 
 
 // Add player images to screen
-function addPlayerImage() {
+function addUserImage(src) {
     let newPlayer = document.createElement('img')
-    newPlayer.src = './assets/greenCharacter/static.gif' // Will need a parameter on function to switch to different characters
+    newPlayer.src = `./assets/${src}/static.gif` // Will need a parameter on function to switch to different characters
     newPlayer.style.position = 'absolute'
     newPlayer.style.width = '35px'
     newPlayer.style.height = '40px'
 
     document.getElementById('1').append(newPlayer)
     newPlayer.style.zIndex = 1;
-
+    newPlayer.position = 1
     return newPlayer
 }
 
 // Computer's Turn
 function computerTurn() {
     let roll = rollDice()
+    playerMovement(roll, computer)
 }
 
 // character movement function for left, right, up, down
-function playerMovement() {
-    let direction = null
-
-    function movePlayer() {
-
+function playerMovement(roll, player) {
+    let currentPosition = player.position
+    let newPosition = currentPosition + roll
+    if (newPosition < 101) {
+        player.position = newPosition
+        document.getElementById(newPosition).append(player)
     }
+    if (newPosition === 100) {
+        gameWin(player)
+    }
+    updateScore(player)
 }
 
+function updateScore(player) {
+    if (player.isHuman) {
+        document.querySelector('#userPosition').textContent = player.position
+    } else {
+        document.querySelector('#computerPosition').textContent = player.position
+    }
+}
 // check if on bottom of ladder or top of chute
 // returns ladder or chute if on either
 // returns false if not
@@ -81,28 +94,46 @@ function climbLadder() {
 
 }
 
-// Land exactly on 100 to win. No overshooting.
-function checkWin() {
-    
-}
+// 
+function gameWin(player) {
+    let header = document.querySelector('h1')
+    if (player.isHuman) {
+        header.textContent = "Congratulation! You womped that computer!"
+        player.win = true
+    } else {
+        header.textContent = "The odds were not in your favor, sorry."
+    }
+    let button = document.querySelector('#rollButton')
+    button.textContent = "New Game"
+    button.addEventListener('click', function() {
+        user.position = 1
+        computer.position = 1
+        document.getElementById('1').append(user)
+        document.getElementById('1').append(computer)
+        header.textContent = 'New Game'
+    })
 
+}
 // Setting up the game
-async function gameSetup() {
-    await createBoard()
-    addPlayerImage() // will need to create as many players as were chosen. Starting with 2 to begin with as default.
-}
 
-gameSetup()
+
+createBoard()
+let user = addUserImage('greenCharacter')
+user.isHuman = true
+let computer = addUserImage('redCharacter')
+
 
 document.querySelector('#rollButton').addEventListener('click', async function () {
-    let movement = rollDice()
+    let roll = rollDice()
     // move character based on the roll
     // player clicks roll - button needs to disappear so it can't be clicked again
+    playerMovement(roll, user)
 
-    
     // computer's turn
     // need to make sure every computer has a turn
-    computerTurn()
+    if(!user.win) {
+        computerTurn()
+    }
 
     // roll button reappears
 })
