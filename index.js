@@ -15,7 +15,7 @@ let slides = [
     [87, 24],
     [64, 60],
     [56, 53],
-    [47, 26],
+    [48, 26],
     [49, 11],
     [16, 6]
 ]
@@ -82,16 +82,23 @@ async function computerTurn() {
 
 // character movement function for left, right, up, down
 async function playerMovement(roll, player) {
+    document.querySelector('#rollButton').style.display = 'none'
     let currentPosition = player.position
-    let newPosition = currentPosition + roll
-    if (newPosition < 101) {
-        player.position = newPosition
-        document.getElementById(newPosition).append(player)
-        await sleep(1000)
+    let newPosition = currentPosition
+    if (newPosition + roll < 101) {
+        for (let i = 0; i < roll; i++) {
+            newPosition++
+            player.position = newPosition
+            document.getElementById(newPosition).append(player)
+
+            await sleep(500)
+        }
         newPosition = ladderOrSlideCheck(newPosition)
-        player.position = newPosition
-        document.getElementById(newPosition).append(player)
-        await sleep(1000)
+        if(newPosition !== player.position){
+            player.position = newPosition
+            document.getElementById(newPosition).append(player)
+            await sleep(1000)
+        }
     }
     if (newPosition === 100) {
         gameWin(player)
@@ -117,6 +124,7 @@ async function rollButtonClick() {
     if(!user.win) {
         await computerTurn()
     }
+    document.querySelector('#rollButton').style.display = 'inline-block'
 }
 
 // When the game is won

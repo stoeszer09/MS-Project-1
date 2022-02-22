@@ -80,8 +80,8 @@ Game board styling
 }
 #ladder9 {
     position: absolute;
-    transform: scale(.7);
-    top: 220px;
+    transform: scale(0.45);
+    top: 200px;
     left: 1090px;
 }
 #slide1 {
