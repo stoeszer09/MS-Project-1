@@ -5,7 +5,7 @@ Chutes and Ladders
 random die rolling generator
 board 1-100
 9 laddders
-    1 -> 38
+    2 -> 38
     5 -> 14
     9 -> 31
     28 -> 84

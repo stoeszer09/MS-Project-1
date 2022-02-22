@@ -1,5 +1,5 @@
 let ladders = [
-    [1, 38],
+    [2, 38],
     [5, 14],
     [9, 31],
     [28, 84],
@@ -12,7 +12,6 @@ let ladders = [
 let slides = [
     [98, 78],
     [95, 75],
-    [93, 73],
     [87, 24],
     [64, 60],
     [56, 53],
@@ -43,9 +42,9 @@ function createBoard() {
         checker.classList.add('box')
         checker.id = value
         if(value %2 === 0) {
-            checker.style.backgroundColor = 'gray'
+            checker.style.backgroundColor = 'cornsilk'
         } else {
-            checker.style.backgroundColor = 'blue'
+            checker.style.backgroundColor = 'seagreen'
         }
         checker.textContent = value
         document.querySelector('.board').append(checker)
