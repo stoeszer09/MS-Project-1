@@ -75,19 +75,23 @@ function addUserImage(src) {
 }
 
 // Computer's Turn
-function computerTurn() {
+async function computerTurn() {
     let roll = rollDice()
-    playerMovement(roll, computer)
+    await playerMovement(roll, computer)
 }
 
 // character movement function for left, right, up, down
-function playerMovement(roll, player) {
+async function playerMovement(roll, player) {
     let currentPosition = player.position
     let newPosition = currentPosition + roll
     if (newPosition < 101) {
-        newPosition = ladderOrChuteCheck(newPosition)
         player.position = newPosition
         document.getElementById(newPosition).append(player)
+        await sleep(1000)
+        newPosition = ladderOrSlideCheck(newPosition)
+        player.position = newPosition
+        document.getElementById(newPosition).append(player)
+        await sleep(1000)
     }
     if (newPosition === 100) {
         gameWin(player)
@@ -105,26 +109,21 @@ function updateScore(player) {
 
 
 // the roll the dice button function that moves the whole game forward
-function rollButtonClick() {
+async function rollButtonClick() {
     let roll = rollDice()
-    // move character based on the roll
-    // player clicks roll - button needs to disappear so it can't be clicked again
-    playerMovement(roll, user)
+    await playerMovement(roll, user)
 
     // computer's turn
-    // need to make sure every computer has a turn
     if(!user.win) {
-        computerTurn()
+        await computerTurn()
     }
-
-    // roll button reappears
 }
 
 // When the game is won
 function gameWin(player) {
     let header = document.querySelector('h1')
     if (player.isHuman) {
-        header.textContent = "Congratulations! You womped that computer!"
+        header.textContent = "Congratulations! You destroyed SkyNet!"
         player.win = true
     } else {
         header.textContent = "The odds were not in your favor, sorry."
@@ -163,10 +162,9 @@ user.isHuman = true
 let computer = addUserImage('redCharacter')
 document.querySelector('#rollButton').addEventListener('click', rollButtonClick)
 
-// check if on bottom of ladder or top of chute
-// returns ladder or chute if on either
-// returns false if not
-function ladderOrChuteCheck(newPosition) {
+// check if on bottom of ladder or top of slide
+// returns the new position on top of ladder or bottom of slide
+function ladderOrSlideCheck(newPosition) {
     ladders.forEach(function(element) {
         if (element[0] === newPosition) {
             newPosition = element[1]
@@ -180,10 +178,6 @@ function ladderOrChuteCheck(newPosition) {
     return newPosition
 }
 
-function slideDown() {
-
-}
-
-function climbLadder() {
-
+function sleep(time) {
+    return new Promise(resolve => setTimeout(resolve, time))
 }
