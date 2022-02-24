@@ -19,13 +19,19 @@ function createBoard() {
         let checker = document.createElement('div')
         checker.classList.add('box')
         checker.id = value
+        let imageHolder = document.createElement('div')
+        imageHolder.classList.add('imageHolder')
+
         if(value %2 === 0) {
             checker.style.backgroundColor = '#DAAD86'
+            imageHolder.style.backgroundColor = '#DAAD86'
         } else {
             checker.style.backgroundColor = '#8D8741'
+            imageHolder.style.backgroundColor = '#8D8741'
         }
         checker.textContent = value
         document.querySelector('.board').append(checker)
+        checker.append(imageHolder)
     })
 }
 
@@ -42,11 +48,14 @@ function rollDice() {
 function addUserImage(src) {
     let newPlayer = document.createElement('img')
     newPlayer.src = `./assets/${src}/static.gif` // Will need a parameter on function to switch to different characters
-    newPlayer.style.position = 'absolute'
+    newPlayer.style.position = 'relative'
     newPlayer.style.width = '35px'
     newPlayer.style.height = '40px'
+    newPlayer.style.opacity = '0.8'
 
-    document.getElementById('1').append(newPlayer)
+    let checker = document.getElementById('1')
+    let imageHolder = checker.querySelector('.imageHolder')
+    imageHolder.append(newPlayer)
     newPlayer.style.zIndex = 1;
     newPlayer.position = 1
     return newPlayer

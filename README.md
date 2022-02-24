@@ -2,6 +2,13 @@
 
 Chutes and Ladders
 
+*********************************
+Known bugs:
+Window screen width must be ~1444px for ladders and slides to show up in the right place.
+
+
+*********************************
+
 random die rolling generator
 board 1-100
 9 laddders
