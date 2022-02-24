@@ -1,7 +1,8 @@
-#flex {
-    display: flex;
-    justify-content: space-between;
+* {
+    font-family: sans-serif;
+    background-color: #FBEEC1;
 }
+
 /* 
 Header styling 
 */
@@ -9,12 +10,19 @@ h1 {
     text-align: center;
     font-size: 4em;
 }
-
+/* 
+Body Styling
+*/
+#flex {
+    display: flex;
+    justify-content: space-between;
+}
 /* 
 User scores/position styling
 */
 .scores {
     list-style: none;
+    width: 200px;
 }
 
 /* 
@@ -144,10 +152,7 @@ Game board styling
 /* 
 Dice roll styling
 */
-.rollArea {
-    margin: auto;
-}
-#rollButton {
+.button {
     margin: auto;
     padding: .7em 1.4em;
     font-size: 2em;
