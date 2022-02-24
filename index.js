@@ -99,6 +99,17 @@ function updateScore(player) {
     } else {
         document.querySelector('#computerPosition').textContent = player.position
     }
+
+    if (user.position < computer.position) {
+        document.querySelector('#userScore').style.color = 'red'
+        document.querySelector('#computerScore').style.color = 'green'
+    } else if (computer.position < user.position) {
+        document.querySelector('#userScore').style.color = 'green'
+        document.querySelector('#computerScore').style.color = 'red'
+    } else {
+        document.querySelector('#userScore').style.color = 'black'
+        document.querySelector('#computerScore').style.color = 'black'
+    }
 }
 
 
